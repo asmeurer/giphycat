@@ -33,7 +33,12 @@ def fetch_image(url):
 
 def display(image):
     """Display an image on an iTerm 2 window"""
-    print(iterm2_tools.images.display_image_bytes(image))
+    image = iterm2_tools.images.display_image_bytes(image)
+    if image:
+        # Old versions of iterm2-tools return an image instead of displaying
+        # it
+        print(image, end='')
+    print()
 
 
 def handle_command_line():
